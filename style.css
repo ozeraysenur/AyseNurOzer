@@ -228,3 +228,10 @@ button:hover {
     border-bottom:1px solid rgba(255,255,255,.06); 
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+
+.seesaw-plank,
+.seesaw-clickable {
+  transform: translate(-50%, -50%) rotate(0deg);
+  transition: transform 580ms cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+}
