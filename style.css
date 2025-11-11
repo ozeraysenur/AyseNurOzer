@@ -210,11 +210,14 @@ button:hover {
 
 .ball{
   position:absolute;
-  width:22px; height:22px; border-radius:50%;
-  display:grid; place-items:center;
-  color:#fff; font-size:12px; font-weight:600;
+  border-radius: 50%;
+  display:grid; 
+  place-items:center;
+  color:#fff; 
+  font-weight:600;
   box-shadow:0 3px 10px rgba(0,0,0,.3);
-  user-select:none; pointer-events:none;
+  user-select:none; 
+  pointer-events:none;
   transition: transform .25s ease, opacity .25s ease;
 }
 

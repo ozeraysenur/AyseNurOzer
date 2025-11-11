@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let masses = [];
 
 
-  // create ball div by manipulatin html with DOM
+  // create ball div by manipulating html with DOM
   function createBall(offsetX, weight) {
     const ball = document.createElement("div");
     ball.className = "ball";
@@ -46,11 +46,19 @@ document.addEventListener("DOMContentLoaded", () => {
     ball.style.bottom = "calc(50% + 12px)";               
     ball.textContent = weight;
     ball.title = `${weight} kg`;
-    container.appendChild(ball);
+    const baseSize = 22;
+    const size = baseSize + weight * 2.2;
+    ball.style.width = `${size}px`;
+    ball.style.height = `${size}px`;
+    ball.style.fontSize = `${12 + weight * 0.5}px`;
+    ball.style.top = "50%";
+    ball.style.transform = `translate(-50%, calc(-50% - ${15 + size/2}px))`;
+    clickable.appendChild(ball);
 
     masses.push({ offsetX, weight, el: ball });
     return ball;
   }
+
   // adding ball position to logs
   function addLog(weight, offsetX) {
     const side = offsetX < 0 ? "left" : (offsetX > 0 ? "right" : "center");
@@ -168,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
   resetBtn.addEventListener("click", () => {
     document.querySelectorAll(".ball").forEach(b => b.remove());
     masses = [];
-    logsEl.innerHTML = "";
+    logsEl.innerHTML ="";
     hidePreview();
     next_weight = Math.floor(Math.random()*10) + 1;
     nextEl.textContent = `${next_weight} kg`;
@@ -180,5 +188,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const startDeg = recomputeAndUpdate();
   applyAngle(startDeg); 
-  
+
 });
