@@ -1,50 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seesaw</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Seesaw</title>
+  <link rel="stylesheet" href="./style.css"/>
 </head>
 <body>
-    <header>
-        <h1>Seesaw Simulation</h1>
-    </header>
-    <div class="container">
-        <div class="stats">
-            <div class="statbox">
-                <div class="stat-label">Left Weight</div>
-                <div class="stat-value" id="left-weight">0.0 kg</div>
-            </div>
-            <div class="statbox">
-                <div class="stat-label">Next Weight</div>
-                <div class="stat-value" id="next-weight">0.0 kg</div>
-            </div>
-            <div class="statbox">
-                <div class="stat-label">Right Weight</div>
-                <div class="stat-value" id="right-weight">0.0 kg</div>
-            </div>           
-            <div class="statbox">
-                <div class="stat-label">Tilt Angle</div>
-                <div class="stat-value" id="tilt-angle">0.0°</div>
-            </div>
-        </div>
-        <div class="seesaw-container">
-            <div class="seesaw-ground"></div>
-            <div class="seesaw-plank"></div>
-            <div class="seesaw-pivot"></div>
-            <div class="seesaw-clickable"></div>
-        </div>
-        <div class="controls">
-            <button id="resetBtn">Reset Seesaw</button>
-            <button id="increaseBtn">Increase Weight</button>
-        </div>
-        <div class="logs">
-            <div class="log-entry"></div>
-        </div>
+  <header>
+    <h1>Seesaw Simulation</h1>
+  </header>
 
-
+  <div class="container">
+    <div class="stats">
+      <div class="statbox">
+        <div class="stat-label">Left Weight</div>
+        <div class="stat-value" id="left-weight">0.0 kg</div>
+      </div>
+      <div class="statbox">
+        <div class="stat-label">Next Weight</div>
+        <div class="stat-value" id="next-weight">0.0 kg</div>
+      </div>
+      <div class="statbox">
+        <div class="stat-label">Right Weight</div>
+        <div class="stat-value" id="right-weight">0.0 kg</div>
+      </div>
+      <div class="statbox">
+        <div class="stat-label">Tilt Angle</div>
+        <div class="stat-value" id="tilt-angle">0.0°</div>
+      </div>
+      <div class="statbox">
+        <div class="stat-label">Left Torque</div>
+        <div class="stat-value" id="left-torque">0</div>
+      </div>
+      <div class="statbox">
+        <div class="stat-label">Right Torque</div>
+        <div class="stat-value" id="right-torque">0</div>
+      </div>
     </div>
-    <script src="./app.js"></script>
+
+    <div class="seesaw-container">
+      <div class="seesaw-ground"></div>
+      <div class="seesaw-plank"></div>
+      <div class="seesaw-pivot"></div>
+      <div class="seesaw-clickable"></div>
+      <div class="preview-ball hidden" id="previewBall">?</div>
+      <div class="preview-line hidden" id="previewLine"></div>
+    </div>
+
+    <div class="controls">
+      <button id="resetBtn">Reset Seesaw</button>
+      <button id="increaseBtn">Increase Weight</button>
+    </div>
+
+    <div class="logs" id="logs"></div>
+  </div>
+
+  <script src="./app.js"></script>
 </body>
 </html>

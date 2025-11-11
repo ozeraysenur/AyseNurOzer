@@ -25,12 +25,12 @@ body {
 }
     
 h1 {
-      text-align: center;
-      color:aliceblue;
-      margin-bottom: 10px;
-      font-size: 2em;
-      text-decoration: solid;
-      text-transform: uppercase;
+    text-align: center;
+    color:aliceblue;
+    margin-bottom: 10px;
+    font-size: 2em;
+    text-decoration: solid;
+    text-transform: uppercase;
 }
 .stats{
     display: flex;
@@ -40,20 +40,24 @@ h1 {
     flex-wrap: wrap;
 }
 .statbox {
-    background-color: gray;
+    background:linear-gradient(180deg,#6c7485,#606a7d); 
     color: white;
     padding: 13px 18px;
-    border-radius: 8px;
+    border-radius: 12px;
     text-align: center;
     flex:1;
+    min-width: 160px;
+    box-shadow:0 4px 12px rgba(0,0,0,.15)
 }
 .stat-label {
     margin-bottom: 12px;
     font-size: 12pt;
     text-transform: uppercase;
+    opacity:0.95; 
+    letter-spacing:0.3px; 
 }
 .stat-value {
-    font-weight: bold;
+    font-weight: 800;
     font-size: 16pt;
 }
 .seesaw-container {
@@ -63,6 +67,9 @@ h1 {
     max-width:900px;
     height: 500px;
     overflow: hidden;
+    background: radial-gradient(1200px 800px at 60% -20%, #dfe6f4 0%, #f4f7ff 45%) no-repeat;
+    border-radius:16px;
+    border:solid 1px  #e8eefc;
 }
 .seesaw-ground {
     position: absolute;
@@ -71,7 +78,8 @@ h1 {
     left:0;
     right:0;
     bottom: 0;
-    background-color: #4e4d4d;
+    background:linear-gradient(180deg,#c9d3eb,#bfc9e2);
+    border-top: 1px solid rgba(0,0,0,.06);
 }
 
 .seesaw-pivot {
@@ -83,17 +91,18 @@ h1 {
     height: 0;
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
-    border-bottom: 40px solid #333;
+    border-bottom: 40px solid #3a4967;
     z-index: 5;
 }
 .seesaw-plank {
     position:absolute;
     top:50%;
     left: 50%;
-    width: 600px;
+    width: 400px;
     height: 30px;
-    background-color: rgb(88, 33, 33);
-    border: #460505 solid 2px;
+    background:linear-gradient(180deg,#2a3347,#232c40);
+    border: rgba(255,255,255,0.06) solid 1px;
+    border-radius:999px;
     z-index: 10;
     transform: translate(-50%, -50%);
     transform-origin:center center;
@@ -102,11 +111,68 @@ h1 {
     position: absolute;
     top: 0%;
     left: 50%;
-    width: 600px;
-    height: 100%;
+    width: 400px;
+    height: 30px;
     transform-origin: center center;
-    transform: translateX(-50%);
-    cursor: pointer;
+    transform: translate(-50%, -50%);
+    cursor: crosshair;
     z-index: 20;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 12px 0;
+}
+button {
+    margin-top: 10px;
+    background-color: #2d6a4f;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1em;
+    font-family: monospace;
     cursor: pointer;
+    box-shadow:0 6px 18px rgba(0,0,0,0.15);
+
+}
+button:hover {
+    background-color:#2a805d;
+}
+
+#logs{ 
+    margin-top:10px; 
+    max-height:140px; 
+    overflow:auto; 
+    border-top:1px 
+    solid #e7ecfb; 
+    padding-top:8px; 
+}
+.log-entry{ 
+    font-size:0.95em; 
+    color:#263042; 
+    padding:6px 0; 
+    border-bottom:1px 
+    dashed #e2e8ff; 
+}
+
+.log-entry:last-child{ 
+    border-bottom:none; 
+}
+
+@media (max-width:600px){
+  .container{ 
+    padding:20px; 
+}
+  .stats{ 
+    flex-direction:column; 
+}
+  .seesaw-container{ 
+    height:320px; 
+}
+  .seesaw-plank, .seesaw-clickable{ 
+    width:300px; 
+}
 }
