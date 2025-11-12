@@ -36,6 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let masses = [];
 
+  function playDropsound() {
+    const dropsound = document.getElementById("dropsound");
+    dropsound.currentTime = 0;
+    dropsound.volume = 0.5; 
+    dropsound.play().catch(() => {})
+  }
+
+
 
   // create ball div by manipulating html with DOM
   function createBall(offsetX, weight) {
@@ -57,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     ball.addEventListener("animationend", () => {
         ball.classList.remove("spawn");
+        playDropsound();
     }, { once: true });
 
     masses.push({ offsetX, weight, el: ball });
@@ -86,10 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const leftPx = `calc(50% + ${offsetX}px)`; 
     const baseSize = 18;                       
     const size = baseSize + next_weight * 1.8; 
+    const previewgap = 12; 
 
     previewLine.style.left = leftPx;
     previewLine.style.top = "50%";
-    previewLine.style.height = `${size + 16}px`;
+    previewLine.style.height = `${size + previewgap *2 }px`;
     previewLine.style.transform = "translate(-50%, -50%)";
     previewLine.classList.remove("hidden");
 

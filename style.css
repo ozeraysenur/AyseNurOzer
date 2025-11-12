@@ -177,7 +177,7 @@ button:hover {
 .preview-ball {
   position: absolute;
   width: 32px;
-  height: 32px;
+  height: 52px;
   border-radius: 50%;
   background: #619fe9;
   color: #fff;
