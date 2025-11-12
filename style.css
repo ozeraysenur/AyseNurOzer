@@ -166,20 +166,6 @@ button:hover {
     border-bottom:none; 
 }
 
-@media (max-width:600px){
-  .container{ 
-    padding:20px; 
-}
-  .stats{ 
-    flex-direction:column; 
-}
-  .seesaw-container{ 
-    height:320px; 
-}
-  .seesaw-plank, .seesaw-clickable{ 
-    width:300px; 
-}}
-
 .preview-line {
   position: absolute;
   width: 2px;
@@ -238,3 +224,28 @@ button:hover {
   transition: transform 580ms cubic-bezier(.22,.61,.36,1);
   will-change: transform;
 }
+
+@keyframes dropIn{
+  0%   { opacity: 0; transform: translate(-50%, -180%); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.ball.spawn{
+  animation: dropIn 520ms cubic-bezier(.22,.61,.36,1) forwards;
+}
+
+
+@media (max-width:600px){
+  .container{ 
+    padding:20px; 
+}
+  .stats{ 
+    flex-direction:column; 
+}
+  .seesaw-container{ 
+    height:320px; 
+}
+  .seesaw-plank, .seesaw-clickable{ 
+    width:300px; 
+}}

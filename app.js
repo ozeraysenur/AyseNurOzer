@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   clickable.appendChild(previewBall);
 
   // random ball color
-  const colors = ["#5AD1C3","#FF7E6B","#9B6BFB","#F6C85F","#7CD992","#60A5FA"];
+  const colors = ["#5AD1C3","#FF7E6B","#9B6BFB","#F6C85F","#7CD992","#60A5FA"]
   const pickColor = () => colors[Math.floor(Math.random()*colors.length)];
   const fmtPx = (x) => (x >= 0 ? `+${x.toFixed(0)}px` : `${x.toFixed(0)}px`);
 
@@ -40,20 +40,24 @@ document.addEventListener("DOMContentLoaded", () => {
   // create ball div by manipulating html with DOM
   function createBall(offsetX, weight) {
     const ball = document.createElement("div");
-    ball.className = "ball";
+    ball.className = "ball spawn";
     ball.style.backgroundColor = pickColor();
-    ball.style.left = `calc(50% + ${offsetX}px)`;         
-    ball.style.bottom = "calc(50% + 12px)";               
+    ball.style.left = `calc(50% + ${offsetX}px)`;                      
     ball.textContent = weight;
     ball.title = `${weight} kg`;
     const baseSize = 22;
     const size = baseSize + weight * 2.2;
     ball.style.width = `${size}px`;
     ball.style.height = `${size}px`;
-    ball.style.fontSize = `${12 + weight * 0.5}px`;
+    ball.style.fontSize = `${12 + weight * 0.5}px`
+    const higherpx = 15 + size/2;
     ball.style.top = "50%";
     ball.style.transform = `translate(-50%, calc(-50% - ${15 + size/2}px))`;
     clickable.appendChild(ball);
+
+    ball.addEventListener("animationend", () => {
+        ball.classList.remove("spawn");
+    }, { once: true });
 
     masses.push({ offsetX, weight, el: ball });
     return ball;
@@ -111,8 +115,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   // finding the torque target degree value and update stats
   function recomputeAndUpdate() {
-    let leftTorque = 0, rightTorque = 0;
-    let leftMass = 0, rightMass = 0;
+    let leftTorque = 0
+    let rightTorque = 0
+    let leftMass = 0; 
+    let rightMass = 0;
 
     for (const m of masses) {
       const d = Math.abs(m.offsetX);      
@@ -151,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // click on plank inside clickable area
   clickable.addEventListener("click", (e) => {
-    const offsetX = getOffsetFromCenter(e);
+    const offsetX = getOffsetFromCenter(e)
     const weight = next_weight;
 
     createBall(offsetX, weight);
