@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const plank_len = 400;
   const half = plank_len / 2;
   const max_angle = 30;
+  const storage_key = "seesawlcl"
 
   // dom elemens
   const clickable = document.querySelector(".seesaw-clickable");
@@ -36,13 +37,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let masses = [];
 
+  function savetolocalst(masses, leftMass, rightMass, leftTorque, rightTorque, tiltDeg, nextWeight) {
+    const data = {
+    masses,
+    leftMass,
+    rightMass,
+    leftTorque,
+    rightTorque,
+    tiltDeg,
+    nextWeight
+    };
+    localStorage.setItem(storage_key, JSON.stringify(data));
+    console.log("saved to local storage");
+  }
+
+  function loadfromlocalst() {
+    const saved = localStorage.getItem(storage_key);
+    if (!saved) return;
+    const data = JSON.parse(saved);
+    if (!data.masses) return;
+    for (let i = 0; i < data.masses.length; i++) {
+        const m = data.masses[i];
+        createBall(m.offsetX, m.weight);
+  }
+
+  console.log("state loaded");
+}
+
   function playDropsound() {
     const dropsound = document.getElementById("dropsound");
     dropsound.currentTime = 0;
     dropsound.volume = 0.5; 
     dropsound.play().catch(() => {})
   }
-
 
 
   // create ball div by manipulating html with DOM
@@ -146,7 +173,9 @@ document.addEventListener("DOMContentLoaded", () => {
     leftTEl.textContent  = Math.round(leftTorque).toString();
     rightTEl.textContent = Math.round(rightTorque).toString();
     angleEl.textContent  = `${targetDeg.toFixed(1)}°`; 
+    savetolocalst(masses, leftMass, rightMass, leftTorque, rightTorque, targetDeg, next_weight);
 
+    
     return targetDeg;
   }
 
@@ -200,9 +229,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const deg = recomputeAndUpdate(); 
     applyAngle(0);  
+    localStorage.removeItem(storage_key);
   })
 
+  loadfromlocalst();
   const startDeg = recomputeAndUpdate();
   applyAngle(startDeg); 
+
 
 });
