@@ -114,3 +114,20 @@ I did not just build a seesaw; I learned how to balance precision, creativity, a
 3. Click anywhere on the plank to drop weights  
 4. Observe the balance and torque updates  
 5. Refresh — the state will remain thanks to localStorage
+
+## Screenshots
+
+**Initial State (Before Any Drop)**
+
+
+<img src="./screenshots/initialState.jpg" width="700"/>
+
+**Right Tilt Example**
+
+
+<img src="./screenshots/rightTilt.jpg" width="700"/>
+
+**Balanced Seesaw After Multiple Drops**
+
+
+<img src="./screenshots/multipleDrops.jpg" width="700"/>
