@@ -1,5 +1,9 @@
 # Seesaw Simulation
 
+## Demo Video
+
+[Watch the Demo on Loom](https://www.loom.com/share/afa7f3855a8143d4adb608b71c22541d)
+
 ## Overview
 
 This project is an interactive seesaw simulation built with HTML, CSS, and vanilla JavaScript.  
